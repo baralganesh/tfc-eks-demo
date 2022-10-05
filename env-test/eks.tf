@@ -3,11 +3,10 @@ module "eks" {
   version = "18.26.6"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.22"  
-  #region = var.region
+  cluster_version = "1.22"    
   cluster_endpoint_private_access = true
-  cluster_endpoint_public_access = false
-  #cluster_endpoint_public_access_cidrs = var.cluster_endpoint_public_access_cidrs 
+  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access_cidrs = var.cluster_endpoint_public_access_cidrs 
 
 
   vpc_id     = module.vpc.vpc_id
