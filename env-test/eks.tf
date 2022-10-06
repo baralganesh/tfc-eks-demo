@@ -27,6 +27,12 @@ module "eks" {
 
 
       instance_types = ["t3.small"]
+      tags = {  
+        Name = "gbaral-eks"
+        Environment = "Test"
+        Retention = "1 Week"
+        Priority = "High"
+      }
 
       min_size     = 1
       max_size     = 3
@@ -38,13 +44,7 @@ module "eks" {
 
       vpc_security_group_ids = [
         aws_security_group.node_group_one.id
-      ]    
-    tags = {  
-      Name = "gbaral-eks"
-      Environment = "Test"
-      Retention = "1 Week"
-      Priority = "High"
-  }
+      ]        
     }
   }
   tags = {  
