@@ -39,6 +39,12 @@ module "eks" {
       vpc_security_group_ids = [
         aws_security_group.node_group_one.id
       ]    
+    tags = {  
+      Name = "gbaral-eks"
+      Environment = "Test"
+      Retention = "1 Week"
+      Priority = "High"
+  }
     }
   }
   tags = {  
