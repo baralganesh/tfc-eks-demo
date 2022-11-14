@@ -6,16 +6,17 @@ module "eks" {
   cluster_version = "1.22"    
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access = true
-  # cluster_endpoint_public_access_cidrs = [  
-  #   "75.2.98.97/32",
-  #   "99.83.150.238/32",
-  #   "52.86.200.106/32",
-  #   "52.86.201.227/32",
-  #   "52.70.186.109/32",
-  #   "44.236.246.186/32",
-  #   "44.238.78.236/32"
-  #   #"86.22.229.35/32"
-  # ]
+  cluster_endpoint_public_access_cidrs = [  
+    "75.2.98.97/32",
+    "99.83.150.238/32",
+    "52.86.200.106/32",
+    "52.86.201.227/32",
+    "52.70.186.109/32",
+    "44.236.246.186/32",
+    "44.238.78.236/32",
+    "86.22.229.35/32"
+  ]
+
 
 
   vpc_id     = module.vpc.vpc_id
