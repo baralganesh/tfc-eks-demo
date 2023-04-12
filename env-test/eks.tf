@@ -52,7 +52,7 @@ module "eks" {
     }
   }
   tags = {  
-    Name = "gbaral-eks"
+    Name = "ganesh.baral"
     Environment = "Test"
     Retention = "1 Week"
     Priority = "High"
