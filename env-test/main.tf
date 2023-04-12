@@ -8,7 +8,7 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
 }
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 data "aws_availability_zones" "available" {}
 
