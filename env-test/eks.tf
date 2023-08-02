@@ -53,7 +53,7 @@ module "eks" {
   }
   tags = {  
     Name = "gbaral-eks"
-    Environment = "Testing-upgrade"
+    Environment = "Test"
     Retention = "1 Week"
     Priority = "High"
   }
