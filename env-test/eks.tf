@@ -3,7 +3,7 @@ module "eks" {
   version = "18.26.6"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.22"    
+  cluster_version = "1.21"    
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access = true
   cluster_endpoint_public_access_cidrs = [  
@@ -36,9 +36,9 @@ module "eks" {
       name = "node-group-1"     
 
 
-      instance_types = ["t3.small"]  
+      instance_types = ["t2.micro"]  
 
-      min_size     = 1
+      min_size     = 2
       max_size     = 3
       desired_size = 2
 
@@ -53,7 +53,7 @@ module "eks" {
   }
   tags = {  
     Name = "gbaral-eks"
-    Environment = "Test"
+    Environment = "Testing-upgrade"
     Retention = "1 Week"
     Priority = "High"
   }
