@@ -43,9 +43,7 @@ module "eks" {
       desired_size = 2
 
       pre_bootstrap_user_data = <<-EOT
-      echo 'All sorted'
-      # Install EBS CSI driver
-      kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/ecr/?ref=master"
+      echo 'All sorted'     
       EOT
 
       vpc_security_group_ids = [
@@ -58,5 +56,19 @@ module "eks" {
     Environment = "Test"
     Retention = "1 Week"
     Priority = "High"
+  }
+
+  # Add the following code to upgrade and install the ebs csi driver
+  ebs_csi_driver_provisioner = {
+    provisioner_type = "kubernetes.io/csi"
+    provisioner_name = "ebs.csi.aws.com"
+    parameters = {
+      clusterName = module.eks.cluster_name
+    }
+  }
+
+  ebs_csi_driver_node_driver = {
+    node_driver_type = "kubernetes.io/csi"
+    node_driver_name = "ebs.csi.aws.com"
   }
 }
