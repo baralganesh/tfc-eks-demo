@@ -3,7 +3,7 @@ module "eks" {
   version = "18.26.6"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.23"    
+  cluster_version = "1.24"    
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access = true
   cluster_endpoint_public_access_cidrs = [  
@@ -47,7 +47,7 @@ module "eks" {
       # Install EBS CSI driver
       kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/ecr/?ref=master"
       EOT
-      
+
       vpc_security_group_ids = [
         aws_security_group.node_group_one.id
       ]        
