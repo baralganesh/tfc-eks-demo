@@ -59,16 +59,16 @@ module "eks" {
   }
 
   # Add the following code to upgrade and install the ebs csi driver
-  ebs_csi_driver_provisioner = {
-    provisioner_type = "kubernetes.io/csi"
-    provisioner_name = "ebs.csi.aws.com"
-    parameters = {
-      clusterName = module.eks.cluster_name
-    }
-  }
+  ebs_csi_driver_provisioner = aws_eks_volume_provisioner.ebs_csi_driver
+}
 
-  ebs_csi_driver_node_driver = {
-    node_driver_type = "kubernetes.io/csi"
-    node_driver_name = "ebs.csi.aws.com"
+resource "aws_eks_volume_provisioner" "ebs_csi_driver" {
+  name = "eks-ebs-csi-driver"
+
+  provisioner_type = "kubernetes.io/csi"
+  provisioner_name = "ebs.csi.aws.com"
+
+  parameters = {
+    clusterName = module.eks.cluster_name
   }
 }
