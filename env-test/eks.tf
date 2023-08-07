@@ -53,22 +53,8 @@ module "eks" {
   }
   tags = {  
     Name = "gbaral-eks"
-    Environment = "Test"
+    Environment = "Test and development"
     Retention = "1 Week"
     Priority = "High"
-  }
-
-  # Add the following code to upgrade and install the ebs csi driver
-  ebs_csi_driver_provisioner = aws_eks_volume_provisioner.ebs_csi_driver
-}
-
-resource "aws_eks_volume_provisioner" "ebs_csi_driver" {
-  name = "eks-ebs-csi-driver"
-
-  provisioner_type = "kubernetes.io/csi"
-  provisioner_name = "ebs.csi.aws.com"
-
-  parameters = {
-    clusterName = module.eks.cluster_name
   }
 }
