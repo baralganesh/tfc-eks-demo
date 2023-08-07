@@ -43,8 +43,6 @@ module "eks" {
       desired_size = 2
 
       pre_bootstrap_user_data = <<-EOT
-      echo 'All sorted'
-      # Install EBS CSI driver
       kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/ecr/?ref=master"
       EOT
 
